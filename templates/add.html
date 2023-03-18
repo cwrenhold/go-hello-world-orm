@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello World!</title>
+	</head>
+	<body>
+		<form action="/add" method="post">
+			<input type="number" name="value1" value="{{.Value1}}" /><br />
+			<input type="number" name="value2" value="{{.Value2}}" /><br />
+			<p>
+				<span>{{.Result}}</span>
+			</p>
+			<input type="submit" value="Submit" />
+		</form>
+	</body>
+</html>
