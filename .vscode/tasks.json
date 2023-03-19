@@ -4,13 +4,20 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run main.go",
+            "label": "CompileDaemon - Build and watch",
             "type": "shell",
-            "command": "go run main.go",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            }
+            "command": "CompileDaemon -command=\"./go-web-hello-worl-orm\"",
+            "problemMatcher": [
+                "$go"
+            ]
+        },
+        {
+            "label": "Run migrations",
+            "type": "shell",
+            "command": "go run migrations/migrate.go",
+            "problemMatcher": [
+                "$go"
+            ]
         }
     ]
 }
