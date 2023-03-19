@@ -6,7 +6,7 @@
         {
             "label": "CompileDaemon - Build and watch",
             "type": "shell",
-            "command": "CompileDaemon -command=\"./go-web-hello-worl-orm\"",
+            "command": "CompileDaemon -command=\"./go-web-hello-world-orm\"",
             "problemMatcher": [
                 "$go"
             ]
