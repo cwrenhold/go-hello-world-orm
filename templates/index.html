@@ -20,14 +20,16 @@
 							<em>Incomplete</em>
 						{{ end }}
 						<br />
-						<a href="/tasks/{{ .ID }}/complete">Mark as complete</a>
+						{{ if not .IsComplete }}
+							<a href="/tasks/{{ .ID }}/complete">Mark as complete</a>
+						{{ end }}
 						<a href="/tasks/{{ .ID }}/edit">Edit</a>
 						<a href="/tasks/{{ .ID }}/delete">Delete</a>
 					</li>
 				{{ end }}
 			</ul>
 
-			<span>Total: {{ len .Tasks }} task(s)</span>
+			<span>Total: {{ len .Tasks }} task(s) ({{ .IncompleteTasksCount }} incomplete)</span>
 		{{ else }}
 			<p>No tasks found.</p>
 		{{ end }}
