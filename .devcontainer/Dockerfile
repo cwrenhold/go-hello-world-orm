@@ -12,6 +12,8 @@ FROM mcr.microsoft.com/devcontainers/go:0-1-bullseye
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
+USER vscode
+
 # Install CompileDaemon to allow us to have a build watcher
 # For more information, go here: https://github.com/githubnemo/CompileDaemon
 RUN go install github.com/githubnemo/CompileDaemon@latest
