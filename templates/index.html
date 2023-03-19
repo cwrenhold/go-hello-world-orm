@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Hello World!</title>
+		<title>Tasks</title>
 	</head>
 	<body>
-		<p>{{.PageTitle}}</p>
-		<p>{{.QueryParam}}</p>
-		<a href="/add">Adder</a>
+		<h1>Tasks</h1>
+
+		<a href="/tasks/create">Create new task</a>
+
+		{{ if .Tasks }}
+			<ul>
+				{{ range .Tasks }}
+					<li>
+						{{ .Description }}
+						<br />
+						{{ if .IsComplete }}
+							<em>Completed</em>
+						{{ else }}
+							<em>Incomplete</em>
+						{{ end }}
+						<br />
+						<a href="/tasks/{{ .ID }}/complete">Mark as complete</a>
+						<a href="/tasks/{{ .ID }}/edit">Edit</a>
+						<a href="/tasks/{{ .ID }}/delete">Delete</a>
+					</li>
+				{{ end }}
+			</ul>
+
+			<span>Total: {{ len .Tasks }} task(s)</span>
+		{{ else }}
+			<p>No tasks found.</p>
+		{{ end }}
 	</body>
 </html>
