@@ -23,7 +23,7 @@ func TasksIndex(c *gin.Context) {
 	var tasks []models.Task
 	initializers.DB.Find(&tasks)
 
-	tmpl, err := template.ParseFiles("templates/index.html")
+	tmpl, err := template.ParseFiles("templates/index.html", "templates/_layout.html")
 
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
@@ -39,18 +39,18 @@ func TasksIndex(c *gin.Context) {
 		IncompleteTasksCount: incompleteCount,
 	}
 
-	tmpl.Execute(c.Writer, pageData)
+	tmpl.ExecuteTemplate(c.Writer, "base", pageData)
 }
 
 func TasksCreate(c *gin.Context) {
-	tmpl, err := template.ParseFiles("templates/create.html")
+	tmpl, err := template.ParseFiles("templates/create.html", "templates/_layout.html")
 
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
 		return
 	}
 
-	tmpl.Execute(c.Writer, nil)
+	tmpl.ExecuteTemplate(c.Writer, "base", nil)
 }
 
 func TaskCreatePost(c *gin.Context) {
@@ -66,7 +66,7 @@ func TaskEdit(c *gin.Context) {
 	var task models.Task
 	initializers.DB.First(&task, c.Param("id"))
 
-	tmpl, err := template.ParseFiles("templates/edit.html")
+	tmpl, err := template.ParseFiles("templates/edit.html", "templates/_layout.html")
 
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
@@ -77,7 +77,7 @@ func TaskEdit(c *gin.Context) {
 		Task: task,
 	}
 
-	tmpl.Execute(c.Writer, pageData)
+	tmpl.ExecuteTemplate(c.Writer, "base", pageData)
 }
 
 func TaskEditPost(c *gin.Context) {

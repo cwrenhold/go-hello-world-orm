@@ -1,37 +1,31 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Tasks</title>
-	</head>
-	<body>
-		<h1>Tasks</h1>
+{{ define "content" }}
+	<h1>Tasks</h1>
 
-		<a href="/tasks/create">Create new task</a>
+	<a href="/tasks/create">Create new task</a>
 
-		{{ if .Tasks }}
-			<ul>
-				{{ range .Tasks }}
-					<li>
-						{{ .Description }}
-						<br />
-						{{ if .IsComplete }}
-							<em>Completed</em>
-						{{ else }}
-							<em>Incomplete</em>
-						{{ end }}
-						<br />
-						{{ if not .IsComplete }}
-							<a href="/tasks/{{ .ID }}/complete">Mark as complete</a>
-						{{ end }}
-						<a href="/tasks/{{ .ID }}/edit">Edit</a>
-						<a href="/tasks/{{ .ID }}/delete">Delete</a>
-					</li>
-				{{ end }}
-			</ul>
+	{{ if .Tasks }}
+		<ul>
+			{{ range .Tasks }}
+				<li>
+					{{ .Description }}
+					<br />
+					{{ if .IsComplete }}
+						<em>Completed</em>
+					{{ else }}
+						<em>Incomplete</em>
+					{{ end }}
+					<br />
+					{{ if not .IsComplete }}
+						<a href="/tasks/{{ .ID }}/complete">Mark as complete</a>
+					{{ end }}
+					<a href="/tasks/{{ .ID }}/edit">Edit</a>
+					<a href="/tasks/{{ .ID }}/delete">Delete</a>
+				</li>
+			{{ end }}
+		</ul>
 
-			<span>Total: {{ len .Tasks }} task(s) ({{ .IncompleteTasksCount }} incomplete)</span>
-		{{ else }}
-			<p>No tasks found.</p>
-		{{ end }}
-	</body>
-</html>
+		<span>Total: {{ len .Tasks }} task(s) ({{ .IncompleteTasksCount }} incomplete)</span>
+	{{ else }}
+		<p>No tasks found.</p>
+	{{ end }}
+{{ end }}
