@@ -26,4 +26,4 @@ There are two tasks which have been setup in the devcontainer:
 
 # Other notes
 
-Thunder client is installed by default into this dev container, and can be used to test the API. Example requests should be available when the project is loaded, but these are located in the [thunder-tests](./thunder-tests/) folder.
+This project uses unpkg to serve the CSS, which is pico CSS, and is not intended for production use. It is purely for demonstration purposes.
